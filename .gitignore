@@ -1,0 +1,7 @@
+/cache
+/phpunit.xml
+/vendor/*
+/.env
+/.idea
+/*.iml
+/.vagrant
