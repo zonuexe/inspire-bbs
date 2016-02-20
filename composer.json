@@ -1,4 +1,10 @@
 {
+    "autoload": {
+        "files": ["src/functions.php"],
+        "psr-4": {
+            "InspireBBS\\": "src/"
+        }
+    },
     "require": {
         "vlucas/phpdotenv": "^2.2",
         "twig/twig": "^1.24",
