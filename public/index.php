@@ -42,8 +42,9 @@ $routing_map[] = ['GET', '/', function (Action $action) use ($twig, $now) {
 }];
 
 $routing_map[] = ['GET', '/list', function (Action $action) use ($twig, $now) {
-    // あとでちゃんと実装する
-    return $twig->render('list.tpl.html', []);
+    return $twig->render('list.tpl.html', [
+        'boards' => Model\Board::findAll(),
+    ]);
 }];
 
 // ...
