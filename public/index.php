@@ -5,6 +5,7 @@
  * @license   WTFPL
  */
 namespace InspireBBS;
+use Teto\Routing\Action;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -26,9 +27,35 @@ $twig   = new \Twig_Environment($loader, [
     'debug' => true,
 ]);
 
-$content = $twig->render('index.tpl.html', [
-    'greeting' => greeting($now),
-]);
+// この配列にHTTPメソッド、URLと返したい値(クロージャ)を追加してしていくよ。
+$routing_map = [];
+
+// クロージャは、Actionを受け取って表示内容を文字列で返す
+$routing_map[] = ['GET', '/', function (Action $action) use ($twig, $now) {
+    return $twig->render('index.tpl.html', [
+        'greeting' => greeting($now),
+    ]);
+}];
+
+$routing_map[] = ['GET', '/list', function (Action $action) use ($twig, $now) {
+    // あとでちゃんと実装する
+    return $twig->render('list.tpl.html', []);
+}];
+
+// ...
+// このへんにいろんな機能を追加していくよ
+// ...
+
+
+$routing_map['#404'] = function (Action $action) use ($twig) {
+    return "そんなページありませんよ…";
+};
+
+// ルーターを起動する
+$router = new \Teto\Routing\Router($routing_map);
+// Actionオブジェクトにはいろんな情報が詰まってるよ
+$action = $router->match($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$content = call_user_func($action->value, $action);
 
 header('Content-Type: text/html; charset=utf-8');
 header('Content-Length: ' . strlen($content));
