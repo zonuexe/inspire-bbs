@@ -20,6 +20,10 @@ date_default_timezone_set('Asia/Tokyo');
 // 現在時刻のオブジェクト
 $now = new \DateTimeImmutable;
 
+$dotenv = new \Dotenv\Dotenv(dirname(__DIR__));
+$dotenv->overload();
+$dotenv->required('DB_DSN')->notEmpty();
+
 $basedir = dirname(__DIR__);
 $loader = new \Twig_Loader_Filesystem($basedir . '/src/View/template');
 $twig   = new \Twig_Environment($loader, [
