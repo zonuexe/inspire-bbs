@@ -38,10 +38,10 @@ final class Board
     }
 
     /**
-     * @param  string slug
+     * @param  string $id
      * @return Board|false
      */
-    public static function find($slug)
+    public static function find($id)
     {
         $data = SQL\Query::execute(db(), self::find_query, [
             ':id' => $id
