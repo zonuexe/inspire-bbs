@@ -14,6 +14,7 @@
         "zonuexe/tetosql": "^0.0.1"
     },
     "require-dev": {
-        "filp/whoops": "^2.0"
+        "filp/whoops": "^2.0",
+        "theseer/phpdox": "0.8.1.1"
     }
 }
