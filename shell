@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+namespace InspireBBS;
+
+// Composerのオートローダーを読み込む
+require_once __DIR__ . '/vendor/autoload.php';
+// ほかに初期化用のPHPファイルがあれば読み込んでおく
+// require_once …
+$dotenv = new \Dotenv\Dotenv(__DIR__);
+$dotenv->overload();
+$dotenv->required('DB_DSN')->notEmpty();
+
+echo __NAMESPACE__ . " shell\n";
+
+$config = new \Psy\Configuration();
+$config->addCasters([
+    'InspireBBS\Model\ModelInterface' => '\InspireBBS\Caster::castModel',
+]);
+$sh = new \Psy\Shell($config);
+// シェル起動直後にプロジェクトのnamespaceを設定する
+$sh->addCode(sprintf("namespace %s;", __NAMESPACE__));
+
+$sh->run();
+
+// 終了時に表示するメッセージ
+echo "Bye.\n";
