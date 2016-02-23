@@ -8,8 +8,12 @@ use Teto\SQL;
  * @author    USAMI Kenta
  * @copyright 2016 USAMI Kenta
  * @license   WTFPL
+ *
+ * @property string $id   板ID(slug)
+ * @property string $name 板名
+ * @property string $text 説明文
  */
-final class Board
+final class Board implements ModelInterface
 {
     use \Teto\Object\TypedProperty;
 
@@ -51,7 +55,7 @@ final class Board
             return false;
         }
 
-        return new BoardModel($data);
+        return new Board($data);
     }
     const find_query = '
         SELECT `id`, `name`, `text` FROM `boards` WHERE `id` = :id@string
