@@ -5,6 +5,11 @@
             "InspireBBS\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "InspireBBS\\": "tests/"
+        }
+    },
     "require": {
         "vlucas/phpdotenv": "^2.2",
         "twig/twig": "^1.24",
@@ -15,7 +20,8 @@
         "apigen/apigen": "^4.1"
     },
     "require-dev": {
-        "filp/whoops": "^2.0"
+        "filp/whoops": "^2.0",
+        "psy/psysh": "^0.7.0"
     },
     "scripts": {
         "doc": "apigen generate"
