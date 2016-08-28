@@ -13,7 +13,7 @@ function db()
     static $db;
 
     if (!$db) {
-        $db = new \PDO(getenv('DB_DSN'), null, null, [PDO::ATTR_PERSISTENT => true]);
+        $db = new \PDO(getenv('DB_DSN'), '', '', [PDO::ATTR_PERSISTENT => true]);
     }
 
     return $db;
