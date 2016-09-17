@@ -1,7 +1,12 @@
 {% extends "base.tpl.html" %}
 {% block title %}いんすぱいやーBBSへようこそ☆{% endblock %}
 {% block content %}
-<h1>いんすぱいやーBBS</h1>
+<h1>いんすぱいやーBBS 板一覧</h1>
 
-<p>ヾ(〃＞＜)ﾉﾞ＜ {{ greeting }}</p>
+<ul>
+{% for board in boards %}
+    <li>{{ board.name }}</li>
+{% endfor %}
+</ul>
+<p>ヾ(〃＞＜)ﾉﾞ＜ ようこそ</p>
 {% endblock %}
