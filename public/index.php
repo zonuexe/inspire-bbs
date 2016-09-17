@@ -35,17 +35,15 @@ $twig   = new \Twig_Environment($loader, [
 $routing_map = [];
 
 // クロージャは、Actionを受け取って表示内容を文字列で返す
-$routing_map[] = ['GET', '/', function (Action $action) use ($twig, $now) {
-    return $twig->render('index.tpl.html', [
-        'greeting' => greeting($now),
-    ]);
-}];
-
-$routing_map[] = ['GET', '/list', function (Action $action) use ($twig, $now) {
-    return $twig->render('list.tpl.html', [
+$routing_map['top_index'] = ['GET', '/', function (Action $action) use ($twig, $now) {
+    return $twig->render('top_index.tpl.html', [
         'boards' => Model\Board::findAll(),
     ]);
 }];
+
+$routing_map['board_index'] = ['GET', '/:board', function (Action $action) use ($twig, $now) {
+    return 'あとで実装するよ…';
+}, ['board' => '/\A[a-z0-9]{1,16}\z/']];
 
 // ...
 // このへんにいろんな機能を追加していくよ
@@ -65,20 +63,3 @@ $content = call_user_func($action->value, $action);
 header('Content-Type: text/html; charset=utf-8');
 header('Content-Length: ' . strlen($content));
 echo $content;
-
-/**
- * @return string
- */
-function greeting(\DateTimeInterface $dt)
-{
-    $hour = (int)$dt->format('H');
-
-    if (4 <= $hour && $hour < 10) {
-        return "お早うございます";
-    }
-    if (10 <= $hour && $hour < 17) {
-        return "こんにちは";
-    }
-
-    return "こんばんわ";
-}
