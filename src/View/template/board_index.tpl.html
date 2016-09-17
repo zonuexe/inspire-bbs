@@ -5,7 +5,7 @@
 
 <ol>
 {% for thread in threads %}
-    <li>{{ thread.title }}</li>
+    <li><a href="{{ url_to('thread_index', {"board": thread.board_id, "timestamp":  thread.timestamp}) }}">{{ thread.title }}</a></li>
 {% endfor %}
 </ol>
 <p>ヾ(〃＞＜)ﾉﾞ＜ わいわい</p>
