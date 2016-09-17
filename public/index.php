@@ -70,6 +70,10 @@ $routing_map['#404'] = function (Action $action) use ($twig) {
 
 // ルーターを起動する
 $router = new \Teto\Routing\Router($routing_map);
+$twig->addFunction(new \Twig_SimpleFunction('url_to', function ($name, array $param = []) use ($router) {
+    return $router->makePath($name, $param, true);
+}));
+
 // Actionオブジェクトにはいろんな情報が詰まってるよ
 $action = $router->match($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
 $content = call_user_func($action->value, $action);
