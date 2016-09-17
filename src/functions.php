@@ -50,6 +50,7 @@ function trip($input)
     ];
 
     $input = mb_convert_encoding($input, 'SJIS', 'UTF-8,SJIS');
+    $input = ($input === '') ? "\0" : $input;
     $salt = substr($input . 'H.', 1, 2);
     $salt = strtr($salt, $salt_table);
     $salt = preg_replace('/[\x00-\x20\x7B-\xFF]/', '.', $salt);

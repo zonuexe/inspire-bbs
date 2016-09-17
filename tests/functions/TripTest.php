@@ -15,6 +15,9 @@ final class TripTest extends \PHPUnit_Framework_TestCase
     public function dataProviderFor_trip()
     {
         return [
+            ['jPpg5.obl6', ''],
+            ['ZnBI2EKkq.', 'a'],
+            ['wqLZLRuzPQ', ' '],
             ['ggrks/po1g', 'Mﾘ5tMC7u'],
             ['yGAhoNiShI', 'ｋａｍｉ'],
             ['Ig9vRBfuyA', 'Wikipedia'],
@@ -33,6 +36,10 @@ final class TripTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['あ', ' あ '],
+            ['◆jPpg5.obl6', '#'],
+            ['◆ZnBI2EKkq.', '#a'],
+            ['あ ◆3zNBOPkseQ', 'あ#あ'],
+            ['あ ◆wqLZLRuzPQ', 'あ # '],
             ['ただきちさん', 'ただきちさん'],
             ['ただきち◇さん', 'ただきち◆さん'],
             ['ただきち ◆Iqbu32xrqY', 'ただきち#ぞぬ'],
