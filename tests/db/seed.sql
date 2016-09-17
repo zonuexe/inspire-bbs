@@ -4,7 +4,7 @@
 INSERT INTO `boards` VALUES("gline", "ガイドライン＠インスパイヤー", "ここがガ板ですよ。。。" );
 
 -- スレ
-INSERT INTO `threads` VALUES("gline", 123456789, "インスパイヤのガイドライン" );
+INSERT INTO `threads` VALUES(123456789, "gline", "インスパイヤのガイドライン" );
 
 -- 投稿
 INSERT INTO `posts`( `board_id`, `thread_timestamp`, `posted_at`, `name`, `email`, `author_hash`, `message`, `ip_addr` )
