@@ -30,7 +30,7 @@ function tripize($input)
     $parts = explode('#', $input, 2);
     $name = array_shift($parts);
 
-    return $name . (isset($parts[0]) ? ' ◆' . trip($parts[0]) : '');
+    return trim(rtrim($name) . (isset($parts[0]) ? ' ◆' . trip($parts[0]) : ''));
 }
 
 /**

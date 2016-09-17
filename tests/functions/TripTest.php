@@ -32,8 +32,11 @@ final class TripTest extends \PHPUnit_Framework_TestCase
     public function dataProviderFor_tripize()
     {
         return [
+            ['あ', ' あ '],
             ['ただきちさん', 'ただきちさん'],
             ['ただきち◇さん', 'ただきち◆さん'],
+            ['ただきち ◆Iqbu32xrqY', 'ただきち#ぞぬ'],
+            ['ただきち ◆Iqbu32xrqY', 'ただきち #ぞぬ'],
             ['ひろゆき ◆yGAhoNiShI', 'ひろゆき#ｋａｍｉ'],
             ['うぃきぺたん ◆Ig9vRBfuyA', 'うぃきぺたん#Wikipedia'],
         ];
