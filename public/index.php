@@ -11,6 +11,10 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 error_reporting(E_ALL | E_STRICT);
 
+ini_set('xdebug.var_display_max_children', -1);
+ini_set('xdebug.var_display_max_data', -1);
+ini_set('xdebug.var_display_max_depth', -1);
+
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
