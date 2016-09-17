@@ -46,8 +46,18 @@ $routing_map['top_index'] = ['GET', '/', function (Action $action) use ($twig, $
 }];
 
 $routing_map['board_index'] = ['GET', '/:board', function (Action $action) use ($twig, $now) {
-    return 'あとで実装するよ…';
+    $board = Model\Board::find($action->param['board']);
+    $threads = Model\Thread::findAllByBoard($board);
+
+    return $twig->render('board_index.tpl.html', [
+        'board'   => $board,
+        'threads' => $threads,
+    ]);
 }, ['board' => '/\A[a-z0-9]{1,16}\z/']];
+
+$routing_map['thread_index'] = ['GET', '/:board/:timestamp', function (Action $action) use ($twig, $now) {
+    return 'あとで実装…';
+}, ['board' => '/\A[a-z0-9]{1,16}\z/', 'timestamp' => '/\A[1-9][0-9]*\z/']];
 
 // ...
 // このへんにいろんな機能を追加していくよ

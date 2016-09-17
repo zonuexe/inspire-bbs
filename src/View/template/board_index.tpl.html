@@ -1,0 +1,12 @@
+{% extends "base.tpl.html" %}
+{% block title %}いんすぱいやーBBSへようこそ☆{% endblock %}
+{% block content %}
+<h1>いんすぱいやーBBS 「{{ board.name }}」</h1>
+
+<ol>
+{% for thread in threads %}
+    <li>{{ thread.title }}</li>
+{% endfor %}
+</ol>
+<p>ヾ(〃＞＜)ﾉﾞ＜ わいわい</p>
+{% endblock %}
